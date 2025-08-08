@@ -5,7 +5,7 @@ from pydub.utils import mediainfo
 # Set this to your folder containing audio files
 AUDIO_FOLDER = "raw_audio"
 NORMALIZED_FOLDER = "audio"
-TARGET_DBFS = -30.0  # Target volume in dBFS
+TARGET_DBFS = -25.0  # Target volume in dBFS
 
 SUPPORTED_FORMATS = ('.mp3', '.ogg', '.wav')
 
