@@ -22,7 +22,13 @@ def normalize_audio_file(filepath, output_folder, target_dBFS):
         sound = AudioSegment.from_file(filepath, format=file_ext)
         normalized_sound = match_target_amplitude(sound, target_dBFS)
         output_path = os.path.join(output_folder, filename)
-        normalized_sound.export(output_path, format=file_ext)
+        if file_ext == ".ogg":
+            normalized_sound.export(output_path, format="ogg", codec="libvorbis")
+        elif file_ext == ".mp3":
+            normalized_sound.export(output_path, format="mp3", bitrate="192k")
+        elif file_ext == ".wav":
+            normalized_sound.export(output_path, format="wav")
+
         print(f"Normalized: {filename}")
     except Exception as e:
         print(f"Failed to normalize {filename}: {e}")
